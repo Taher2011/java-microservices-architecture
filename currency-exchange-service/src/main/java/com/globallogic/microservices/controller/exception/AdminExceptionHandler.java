@@ -1,7 +1,5 @@
 package com.globallogic.microservices.controller.exception;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -23,23 +21,23 @@ public class AdminExceptionHandler {
 	private static final Logger logger = LogManager.getLogger();
 
 	@ExceptionHandler(NotFoundException.class)
-	public ResponseEntity<Error> notFoundException() {
+	public ResponseEntity<Error> notFoundException(Exception e) {
 		Error error = new Error();
 		error.setErrorCode(ErrorCode.ERR_13.getCode());
-		error.setErrorMessage(ErrorMessage.ERR_13_MESSAGE.getMessage());
+		error.setErrorMessage(e.getMessage());
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
-	
+
 	@ExceptionHandler(AuthenticationException.class)
-	public ResponseEntity<Error> authenticationException() {
+	public ResponseEntity<Error> authenticationException(Exception e) {
 		Error error = new Error();
 		error.setErrorCode(ErrorCode.ERR_12.getCode());
-		error.setErrorMessage(ErrorMessage.ERR_12_MESSAGE.getMessage());
+		error.setErrorMessage(e.getMessage());
 		return new ResponseEntity<>(error, HttpStatus.UNAUTHORIZED);
 	}
-	
+
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity<Error> internalServerException() {
+	public ResponseEntity<Error> internalServerException(Exception e) {
 		Error error = new Error();
 		error.setErrorCode(ErrorCode.ERR_14.getCode());
 		error.setErrorMessage(ErrorMessage.ERR_14_MESSAGE.getMessage());

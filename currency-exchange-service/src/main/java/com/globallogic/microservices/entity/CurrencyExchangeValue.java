@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "exchange_value")
-public class ExchangeValue {
+public class CurrencyExchangeValue {
 
 	@Id
 	private Long id;
@@ -26,11 +26,11 @@ public class ExchangeValue {
 	@Column(name = "created_by")
 	private String createdBy;
 
-	public ExchangeValue() {
+	public CurrencyExchangeValue() {
 		super();
 	}
 
-	public ExchangeValue(Long id, String from, String to, BigDecimal conversionMultiple) {
+	public CurrencyExchangeValue(Long id, String from, String to, BigDecimal conversionMultiple) {
 		super();
 		this.id = id;
 		this.from = from;

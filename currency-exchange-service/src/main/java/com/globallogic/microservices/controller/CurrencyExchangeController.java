@@ -10,23 +10,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.globallogic.microservices.model.ExchangeValueResponse;
-import com.globallogic.microservices.service.ExchangeValueService;
+import com.globallogic.microservices.model.CurrencyExchangeValueResponse;
+import com.globallogic.microservices.service.CurrencExchangeValueService;
 
 @RestController
 public class CurrencyExchangeController {
 
 	@Autowired
-	private ExchangeValueService exchangeValueService;
+	private CurrencExchangeValueService currencExchangeValueService;
 
 	private static final Logger logger = LogManager.getLogger(CurrencyExchangeController.class);
 
 	@GetMapping("/currency-exchange/from/{from}/to/{to}")
-	public ResponseEntity<ExchangeValueResponse> retreiveExchangeValue(
+	public ResponseEntity<CurrencyExchangeValueResponse> retreiveCurrencyExchangeValue(
 			@PathVariable(value = "from", required = true) String from,
 			@PathVariable(value = "to", required = true) String to,
 			@RequestHeader(value = "x-userName") String userName) {
-		return new ResponseEntity<>(exchangeValueService.retreiveExchangeValue(from, to, userName), HttpStatus.OK);
+		return new ResponseEntity<>(currencExchangeValueService.retreiveCurrencyExchangeValue(from, to, userName), HttpStatus.OK);
 	}
 
 }
