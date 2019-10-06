@@ -1,7 +1,6 @@
 package com.globallogic.microservices.service;
 
 import java.math.BigDecimal;
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
