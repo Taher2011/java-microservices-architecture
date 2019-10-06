@@ -29,4 +29,23 @@ public class CurrencyConversionController {
 				HttpStatus.OK);
 	}
 
+	/**
+	 * Method is used to invoke external microservice using feign client
+	 * 
+	 * @param from
+	 * @param to
+	 * @param quantity
+	 * @param userName
+	 * @return
+	 */
+	@GetMapping("/currency-converter-feign/from/{from}/to/{to}/quantity/{quantity}")
+	public ResponseEntity<CurrencyConversionResponse> convertCurrencyFeign(
+			@PathVariable(value = "from", required = true) String from,
+			@PathVariable(value = "to", required = true) String to,
+			@PathVariable(value = "quantity", required = true) BigDecimal quantity,
+			@RequestHeader(value = "x-userName") String userName) {
+		return new ResponseEntity<>(currencyConversionService.convertCurrencyFeign(from, to, quantity, userName),
+				HttpStatus.OK);
+	}
+
 }
