@@ -12,9 +12,9 @@ import com.globallogic.microservices.constant.ErrorMessage;
 import com.globallogic.microservices.model.Error;
 
 @ControllerAdvice
-public class CurrencyExceptionHandler {
+public class CurrencyExchangeExceptionHandler {
 
-	private CurrencyExceptionHandler() {
+	private CurrencyExchangeExceptionHandler() {
 		super();
 	}
 
