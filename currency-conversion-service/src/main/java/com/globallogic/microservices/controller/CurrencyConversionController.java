@@ -30,7 +30,9 @@ public class CurrencyConversionController {
 	}
 
 	/**
-	 * Method is used to invoke external microservice using feign client
+	 * Method is used to invoke external microservice using feign client and
+	 * distribute the load using Ribbon and Eureka Server between different
+	 * instances of microservices deployed
 	 * 
 	 * @param from
 	 * @param to
