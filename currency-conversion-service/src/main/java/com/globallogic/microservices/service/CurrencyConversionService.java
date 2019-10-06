@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -20,6 +22,8 @@ public class CurrencyConversionService {
 
 	@Autowired
 	private CurrencyExchangeServiceProxy currencyExchangeServiceProxy;
+
+	private static final Logger logger = LogManager.getLogger(CurrencyConversionService.class);
 
 	public CurrencyConversionResponse convertCurrency(String from, String to, BigDecimal quantity, String userName) {
 
@@ -60,6 +64,9 @@ public class CurrencyConversionService {
 
 		CurrencyConversionResponse currencyConversionResponse = currencyExchangeServiceProxy
 				.retreiveCurrencyExchangeValue(userName, from, to);
+
+		logger.info("{}", currencyConversionResponse);
+
 		currencyConversionResponse.setQuantity(quantity);
 		currencyConversionResponse.setTotalCalculatedAmount(
 				currencyConversionResponse.getQuantity().multiply(currencyConversionResponse.getConversionMultiple()));

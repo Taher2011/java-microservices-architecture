@@ -35,6 +35,9 @@ public class CurrencExchangeValueService {
 			if (exchangeValue.isPresent()) {
 				exchangeValueResponse = new CurrencyExchangeValueResponse();
 				prepareCurrencyExchangeValueResponse(exchangeValueResponse, exchangeValue.get());
+
+				logger.info("{}", exchangeValueResponse);
+
 			} else {
 				throw new NotFoundException(
 						ErrorMessage.ERR_13_MESSAGE.getMessage().replace("${object}", "Currency Conversion"));

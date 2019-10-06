@@ -2,8 +2,8 @@ package com.globallogic.microservices.filter;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.netflix.zuul.ZuulFilter;
@@ -13,7 +13,7 @@ import com.netflix.zuul.exception.ZuulException;
 @Component
 public class ZuulLoggingFilter extends ZuulFilter {
 
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	private Logger logger = LogManager.getLogger(ZuulLoggingFilter.class);
 
 	@Override
 	public boolean shouldFilter() {
