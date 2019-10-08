@@ -26,4 +26,15 @@ public class CurrencyExchangeServiceApplication {
 		return Sampler.ALWAYS_SAMPLE;
 	}
 
+	@Bean
+	public CurrencyLoggingFilter filter() {
+		CurrencyLoggingFilter currencyLoggingFilter = new CurrencyLoggingFilter();
+		currencyLoggingFilter.setIncludeQueryString(true);
+		currencyLoggingFilter.setIncludePayload(true);
+		currencyLoggingFilter.setMaxPayloadLength(20000);
+		currencyLoggingFilter.setIncludeHeaders(true);
+		currencyLoggingFilter.setAfterMessagePrefix("REQUEST DATA : ");
+		return currencyLoggingFilter;
+	}
+
 }

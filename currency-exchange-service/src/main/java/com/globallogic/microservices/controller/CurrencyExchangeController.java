@@ -26,7 +26,8 @@ public class CurrencyExchangeController {
 			@PathVariable(value = "from", required = true) String from,
 			@PathVariable(value = "to", required = true) String to,
 			@RequestHeader(value = "x-userName") String userName) {
-		return new ResponseEntity<>(currencExchangeValueService.retreiveCurrencyExchangeValue(from, to, userName), HttpStatus.OK);
+		return new ResponseEntity<>(currencExchangeValueService.retreiveCurrencyExchangeValue(from, to, userName),
+				HttpStatus.OK);
 	}
 
 }
